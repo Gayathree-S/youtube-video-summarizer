@@ -4,7 +4,7 @@ An AI-powered full-stack application that downloads YouTube videos, transcribes 
 
 ---
 
-## ✨ Features
+##  Features
 
 - 🔗 Paste any YouTube URL
 - 🎙️ Automatic speech-to-text via OpenAI Whisper
