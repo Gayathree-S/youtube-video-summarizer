@@ -254,13 +254,5 @@ BACKEND_URL = https://your-backend.railway.app
 
 ---
 
-## 📸 Screenshots
 
-> _Add screenshots of the running app here._
 
----
-
-## 📄 License
-
-MIT License — free to use and modify.
-Frontend UI for YouTube Summarizer

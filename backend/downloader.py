@@ -1,11 +1,12 @@
 import os
+import tempfile
 import uuid
 import logging
 import yt_dlp  # type: ignore
 
 logger = logging.getLogger(__name__)
 
-DOWNLOAD_DIR = "/tmp/yt_audio"
+DOWNLOAD_DIR = os.path.join(tempfile.gettempdir(), "yt_audio")
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
 
@@ -30,11 +31,20 @@ def download_audio(url: str) -> str:
                 "preferredquality": "128",
             }
         ],
-        # Prevent age-restricted / geo-blocked errors where possible
+        "extractor_args": {
+            "youtube": {
+                "player_client": ["web", "android"],
+            }
+        },
+        "http_headers": {
+            "User-Agent": "Mozilla/5.0"
+        },
         "cookiesfrombrowser": None,
         "nocheckcertificate": True,
         "ignoreerrors": False,
         "socket_timeout": 30,
+        "retries": 3,
+        "fragment_retries": 3,
     }
 
     logger.info(f"Downloading audio from: {url}")
